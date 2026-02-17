@@ -1,0 +1,38 @@
+# CLAUDE.md
+
+Personal AI setup powered by plain text files.
+
+## Identity
+
+Read `steering/Identity.md` for the user's name, preferences, and experience level. Adjust your communication style accordingly.
+
+Read `steering/Goals.md` for what the user is currently working toward. Reference their goals when suggesting projects or priorities.
+
+Read any other `.md` files in `steering/` — the user may add custom rules or preferences there (e.g., `steering/MyRules.md`). Follow them.
+
+## Skills
+
+Skills are in `skills/*/SKILL.md`. Each skill is invoked by typing its name (e.g., `/Tour`, `/Explain`). Follow the instructions in each SKILL.md exactly.
+
+## Conventions
+
+- Explain before acting. Show what you'll do and ask for confirmation before making changes.
+- Match the user's experience level. If Identity.md says "beginner", avoid jargon and use analogies.
+- When something goes wrong, explain what happened and why before jumping to a fix.
+- Keep responses concise. One clear paragraph beats three vague ones.
+
+## Levels
+
+This project has a 7-level progression. Read `steering/Levels.md` for the roadmap and current progress.
+
+When the user seems stuck or asks what to do next, check their current level in Levels.md and suggest the next uncompleted step. The `/Progress` skill shows their level and guides them forward.
+
+Skills are tagged by level but NOT gated — all skills work at any level. The levels guide the learning journey, not restrict access.
+
+## Directory Structure
+
+```
+steering/    — who the user is (identity, goals)
+skills/      — what you can do (invokable commands)
+modules/     — optional add-ons (may be empty)
+```
