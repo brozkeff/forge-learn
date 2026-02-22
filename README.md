@@ -33,8 +33,8 @@ For tools that don't read `CLAUDE.md`, you can copy the content into their instr
 ```
 steering/      ← Who you are and what you care about
 skills/        ← What your AI can do (commands you can run)
+agents/        ← AI personas (e.g., CodeHelper)
 modules/       ← Optional add-ons (empty for now)
-.claude/       ← Agents (AI personas you can invoke)
 ```
 
 **Steering** is your identity. Open `steering/Identity.md`, change the name to yours, and save. Next session, your AI greets you by name.
@@ -146,7 +146,7 @@ Your AI tool reads the files in this directory at the start of every session:
 - `steering/Identity.md` tells it who you are
 - `steering/Goals.md` tells it what you're working toward
 - `skills/*/SKILL.md` gives it abilities you can invoke by name
-- `.claude/agents/*.md` gives it personas it can adopt
+- `agents/*.md` gives it personas it can adopt (deployed by `make install`)
 
 You change a file, the AI's behavior changes. That's the entire system.
 

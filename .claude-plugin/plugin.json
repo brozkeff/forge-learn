@@ -1,6 +1,7 @@
 {
-  "name": "forge-user",
-  "version": "0.1.0",
-  "description": "Personal AI skills — teach your assistant who you are",
-  "skills": ["./skills"]
+    "name": "forge-user",
+    "version": "0.1.0",
+    "description": "Personal AI skills — teach your assistant who you are",
+    "author": {"name": "Martin Zeman"},
+    "skills": ["./skills"]
 }

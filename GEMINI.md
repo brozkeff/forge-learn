@@ -4,7 +4,7 @@ This file provides instructional context for the Gemini AI agent when working wi
 
 ## Project Overview
 
-**forge-user** is a beginner-friendly personal AI setup module for the Forge ecosystem. It provides 20 skills, identity steering files, and a 7-level progression system that teaches users to customize their AI assistant.
+**forge-user** is a beginner-friendly personal AI setup module for the Forge ecosystem. It provides 19 skills, 1 agent, identity steering files, and a 7-level progression system that teaches users to customize their AI assistant.
 
 ### Core Responsibilities
 
@@ -16,10 +16,10 @@ This file provides instructional context for the Gemini AI agent when working wi
 ## Building and Testing
 
 ```bash
-make install          # deploy skills to all providers
-make verify           # check skills deployed across all providers
+make install          # deploy agents + skills to all providers
+make verify           # check agents + skills deployed across all providers
 make test             # validate-module convention checks
-make clean            # remove installed skills
+make clean            # remove installed agents + skills
 ```
 
 ## Skills
@@ -47,12 +47,20 @@ make clean            # remove installed skills
 
 Note: `Progress` is Claude Code-only and not deployed to Gemini.
 
+## Agents
+
+| Agent | Responsibilities |
+|:------|:-----------------|
+| `CodeHelper` | Beginner-friendly code explanation and minimal fixes |
+
+Agent source files live in `agents/`. Model and tool assignments are in `defaults.yaml`.
+
 ## Skill File Convention
 
 Each skill directory contains:
 
 - `SKILL.md` -- AI instructions with YAML frontmatter (name, description, version)
-- `SKILL.yaml` -- deployment metadata (name, description)
+- `SKILL.yaml` -- sidecar metadata (sources, provider-specific config)
 - Optional `sample.md` demo files
 
 ## Submodule Integration
@@ -71,12 +79,13 @@ install-forge-user:
 
 ## Configuration
 
-- `defaults.yaml`: provider-keyed skill roster (committed)
+- `defaults.yaml`: provider-keyed skill roster + agent config (committed)
 - `config.yaml`: user overrides (gitignored), same structure as defaults
 - `module.yaml`: module metadata (name, version, description)
 
 ## Development Conventions
 
 - **Skill naming**: PascalCase directories matching `name:` in SKILL.md frontmatter
+- **Agent naming**: PascalCase filenames matching `name:` in frontmatter
 - **Provider routing**: provider-keyed allowlists in `defaults.yaml` control which platforms receive each skill
-- **forge-lib**: git submodule at `lib/`, provides `install-skills` and `validate-module` Rust binaries
+- **forge-lib**: git submodule at `lib/`, provides `install-skills`, `install-agents`, and `validate-module` Rust binaries

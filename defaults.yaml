@@ -59,3 +59,42 @@ skills:
         Summarize:
         Tour:
         Translate:
+
+    opencode:
+        CleanText:
+        Emojify:
+        Explain:
+        ExplainSimply:
+        FixGrammar:
+        FixIt:
+        GenerateGlossary:
+        GenerateOutline:
+        GitHelp:
+        HighImpactChanges:
+        Kickstart:
+        MakeLonger:
+        MakeShorter:
+        Pandoc:
+        RewriteAsTweet:
+        Summarize:
+        Tour:
+        Translate:
+
+agents:
+    CodeHelper:
+        model: fast
+        tools: Read, Grep, Glob, Bash
+
+providers:
+    claude:
+        fast: claude-sonnet-4-6
+        strong: claude-opus-4-6
+    gemini:
+        fast: gemini-2.0-flash
+        strong: gemini-2.5-pro
+    codex:
+        fast: o4-mini
+        strong: o4-mini
+    opencode:
+        fast: claude-sonnet-4-6
+        strong: claude-opus-4-6

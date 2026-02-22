@@ -42,7 +42,7 @@ Expected skills: CleanText, Emojify, Explain, ExplainSimply, FixGrammar, FixIt, 
 
 ## Check 5: Agent Available
 
-Verify `.claude/agents/CodeHelper.md` exists. If missing, the starter agent won't be available for Level 5 progression.
+Verify `agents/CodeHelper.md` exists (source file). After `make install`, it deploys to `.claude/agents/CodeHelper.md`. If the source is missing, the starter agent won't be available for Level 5 progression.
 
 ## Reporting Results
 

@@ -18,6 +18,17 @@ Before setup, verify the user has what they need:
    - Windows WinGet: `winget install Anthropic.ClaudeCode`
 
 
+## Build and Deploy
+
+If the user wants to deploy agents and skills to all providers:
+
+```bash
+git submodule update --init lib   # initialize forge-lib (first time only)
+make -C lib build                 # build Rust binaries (first time only)
+make install                      # deploy 1 agent + 19 skills to all providers
+make verify                       # confirm everything deployed
+```
+
 ## First-Time Setup
 
 If the user just cloned the repo and is starting for the first time:

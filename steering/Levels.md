@@ -60,12 +60,12 @@ Go from "I want to build X" to a working project.
 
 You already edited Identity.md to change how the AI talks to you. Now write custom rules, skills, and tune agents.
 
-A skill tells the AI what to do. An agent tells the AI who to be — a character it stays in for the whole conversation. Look at `.claude/agents/CodeHelper.md` to see how one works.
+A skill tells the AI what to do. An agent tells the AI who to be — a character it stays in for the whole conversation. Look at `agents/CodeHelper.md` to see how one works.
 
 **Skills**: /Progress (to track your journey)
 
 - [ ] Created a custom rule file in steering/ (e.g., `steering/MyRules.md` with "always use British spelling")
-- [ ] Edited the starter agent in `.claude/agents/` (change its persona, or create a new one for something you need)
+- [ ] Edited the starter agent in `agents/` (change its persona, or create a new one for something you need)
 - [ ] Created your own skill in skills/ (a SKILL.md file — look at existing skills for the pattern)
 
 ---
