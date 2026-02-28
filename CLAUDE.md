@@ -14,6 +14,8 @@ make test             # validate-module convention checks
 make lint             # mdschema + shellcheck
 ```
 
+Windows note: these Make targets use POSIX shell syntax. In PowerShell, use the fallback commands in `INSTALL.md` (`cargo build --release` + `install-agents.exe` / `install-skills.exe`) or run `make` from WSL/Git Bash.
+
 ## Identity
 
 Read `steering/Identity.md` for the user's name, preferences, and experience level. Adjust your communication style accordingly.

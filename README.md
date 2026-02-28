@@ -93,7 +93,9 @@ claude
 
 1. Open `steering/Identity.md` in any text editor — change `Your Name` to your actual name and save
 2. Open `steering/Goals.md` — replace the example goals with yours
-3. Run `make install` to deploy agents and skills to all providers
+3. Deploy agents and skills:
+   - Mac/Linux/WSL/Git Bash: run `make install`
+   - Windows PowerShell fallback: run the Windows block in [INSTALL.md](INSTALL.md) (`cargo build --release` + `install-*.exe`)
 4. Start Claude Code: `claude`
 5. Type `/Tour`
 
@@ -135,7 +137,7 @@ Your AI tool reads the files in this directory at the start of every session:
 - `steering/Identity.md` tells it who you are
 - `steering/Goals.md` tells it what you're working toward
 - `skills/*/SKILL.md` gives it abilities you can invoke by name
-- `agents/*.md` gives it personas it can adopt (deployed by `make install`)
+- `agents/*.md` gives it personas it can adopt (deployed by `make install` or Windows fallback commands in `INSTALL.md`)
 
 You change a file, the AI's behavior changes. That's the entire system.
 
@@ -161,7 +163,8 @@ Clone a module into `modules/` and ask your AI to help set it up. For automated 
 - [Git](https://git-scm.com/downloads) — to download and manage this repository
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — the AI tool that reads these files
 - A text editor — anything works (VS Code, Notepad, TextEdit, Sublime, vim)
-- **Windows**: Works natively on Windows 10+. See [platform setup](https://code.claude.com/docs/en/setup#platform-specific-setup) for details.
+- Rust toolchain (`cargo`) for first-time local binary builds (`lib/`)
+- **Windows**: Works natively on Windows 10+. `make` recipes are POSIX-style; use WSL/Git Bash for `make install`, or use the PowerShell fallback in [INSTALL.md](INSTALL.md).
 
 ## License
 

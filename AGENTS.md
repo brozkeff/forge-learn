@@ -13,6 +13,8 @@ make test             # validate-module convention checks
 make clean            # remove installed agents + skills
 ```
 
+Windows note: if `make` fails in PowerShell due POSIX shell syntax, use the Windows fallback in `INSTALL.md` (`cargo build --release` + `install-agents.exe` / `install-skills.exe`).
+
 ## Project Structure
 
 ```

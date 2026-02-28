@@ -42,7 +42,7 @@ Expected skills: Explain, FixIt, GitHelp, Kickstart, Progress, Summarize, Tour.
 
 ## Check 5: Agent Available
 
-Verify `agents/CodeHelper.md` exists (source file). After `make install`, it deploys to `.claude/agents/CodeHelper.md`. If the source is missing, the starter agent won't be available for Level 5 progression.
+Verify `agents/CodeHelper.md` exists (source file). After install (`make install` on POSIX shells, or `install-agents.exe` on Windows PowerShell), it deploys to `.claude/agents/CodeHelper.md`. If the source is missing, the starter agent won't be available for Level 5 progression.
 
 ## Reporting Results
 

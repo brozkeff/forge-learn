@@ -17,16 +17,54 @@ Before setup, verify the user has what they need:
    - Mac Homebrew: `brew install --cask claude-code`
    - Windows WinGet: `winget install Anthropic.ClaudeCode`
 
+3. **Build tooling** (needed on first install to build `forge-lib` binaries):
+   - Mac/Linux: ensure `make` and `cargo` are available.
+   - Windows: prefer WSL or Git Bash for `make` targets. If staying in PowerShell, use the fallback commands below.
+   - Windows install helpers:
+     - Rust: `winget install -e --id Rustlang.Rustup`
+     - Make: `winget install -e --id ezwinports.make`
+
 
 ## Build and Deploy
 
 If the user wants to deploy agents and skills to all providers:
+
+### POSIX shells (macOS/Linux/WSL/Git Bash)
 
 ```bash
 git submodule update --init lib   # initialize forge-lib (first time only)
 make -C lib build                 # build Rust binaries (first time only)
 make install                      # deploy 1 agent + 7 skills to all providers
 make verify                       # confirm everything deployed
+```
+
+### Windows PowerShell fallback
+
+Use this if `make install` fails due POSIX shell syntax (`if [ ... ]`, `for ...; do`, `ln -sf`, `mkdir -p`):
+
+```powershell
+git submodule update --init lib
+$env:PATH = "$env:USERPROFILE\.cargo\bin;$env:PATH"
+cargo build --release --manifest-path lib/Cargo.toml
+
+.\lib\target\release\install-agents.exe agents --scope workspace
+.\lib\target\release\install-skills.exe skills --provider claude --scope workspace
+.\lib\target\release\install-skills.exe skills --provider codex --scope workspace
+.\lib\target\release\install-skills.exe skills --provider opencode --scope workspace
+
+if (Get-Command gemini -ErrorAction SilentlyContinue) {
+  .\lib\target\release\install-skills.exe skills --provider gemini --scope workspace
+} else {
+  Write-Host "skip gemini skill install (gemini CLI not installed)"
+}
+```
+
+PowerShell verification quick check:
+
+```powershell
+Get-ChildItem .claude\agents,.gemini\agents,.codex\agents,.opencode\agents
+Get-ChildItem .claude\skills,.codex\skills,.opencode\skills
+Select-String -Path .codex\config.toml -Pattern '\[agents\.CodeHelper\]'
 ```
 
 ## First-Time Setup
@@ -67,5 +105,5 @@ If the user outgrows forge-learn (wants hooks, automated dispatching, Rust-power
 
 ## Platform Notes
 
-- **Windows**: Claude Code runs natively on Windows 10 (1809+). Requires [Git for Windows](https://git-scm.com/downloads/win) for shell operations. WSL 2 also works.
+- **Windows**: Claude Code runs natively on Windows 10 (1809+). Requires [Git for Windows](https://git-scm.com/downloads/win) for shell operations. WSL 2 also works. If running from PowerShell, `make` targets may fail unless invoked through a POSIX shell; use the PowerShell fallback in this file.
 - **Other tools**: The steering files and CLAUDE.md are plain markdown — useful with any AI tool. [OpenCode](https://opencode.ai) reads CLAUDE.md as a fallback. For [Codex CLI](https://developers.openai.com/codex) (uses AGENTS.md) or [Gemini CLI](https://github.com/google-gemini/gemini-cli) (uses GEMINI.md), copy CLAUDE.md content into the tool's instruction file format. Skill slash commands only work in Claude Code.
