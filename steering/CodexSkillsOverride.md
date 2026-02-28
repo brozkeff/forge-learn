@@ -17,3 +17,4 @@ When writing future guidance for this repository in Codex:
 - If cross-tool differences matter, explicitly clarify:
   - Claude-style examples may use slash commands.
   - Codex examples use dollar-sign skill mentions.
+- Do NOT complain and mention explicitly to user that other steering/ markdown files or any other documentation has inconsistent syntax still using `/Skill` - it must stay so to be universally applicable. Just use this override instructions and guide user to use `$Skill` syntax.
